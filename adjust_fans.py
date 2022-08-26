@@ -19,13 +19,13 @@ commander_fans = [ "fan1", "fan2", "fan3", "fan4", "fan5", "fan6" ]
 if args.device == "AIO" or args.all_fans is True:
     if args.all_fans is True:
         for fan in aio_fans:
-            os.system(f'sudo liquidctl --match "Hydro" set {fan} speed {args.speed}')
+            os.system(f'liquidctl --match "Hydro" set {fan} speed {args.speed}')
     elif args.fan is not None:
-        os.system(f'sudo liquidctl --match "Hydro" set fan{args.fan} speed {args.speed}')
+        os.system(f'liquidctl --match "Hydro" set fan{args.fan} speed {args.speed}')
 
 if args.device == "Commander" or args.all_fans is True:
     if args.all_fans is True:
         for fan in commander_fans:
-            os.system(f'sudo liquidctl --match "Commander" set {fan} speed {args.speed}')
+            os.system(f'liquidctl --match "Commander" set {fan} speed {args.speed}')
     elif args.fan is not None:
-        os.system(f'sudo liquidctl --match "Commander" set fan{args.fan} speed {args.speed}')
+        os.system(f'liquidctl --match "Commander" set fan{args.fan} speed {args.speed}')
