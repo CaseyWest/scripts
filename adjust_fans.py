@@ -9,12 +9,16 @@ parser.add_argument("--speed", help="the percentage of max speed for fans")
 parser.add_argument("--device", help="device name to adjust")
 parser.add_argument("--all", dest="all_fans", action="store_true", default=False)
 parser.add_argument("--fan", help="the fan identifier to set to percentage")
+parser.add_argument("--status", help="show fan speed status", default=False, dest="status", action="store_true")
 args = parser.parse_args()
 
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s: %(message)s')
 
 aio_fans = [ "fan1", "fan2", "fan3" ]
 commander_fans = [ "fan1", "fan2", "fan3", "fan4", "fan5", "fan6" ]
+
+if args.status is True:
+    os.system(f'liquidctl status')
 
 if args.device == "AIO" or args.all_fans is True:
     if args.all_fans is True:
