@@ -22,6 +22,9 @@ if args.device == "AIO" or args.all_fans is True:
             os.system(f'liquidctl --match "Hydro" set {fan} speed {args.speed}')
     elif args.fan is not None:
         os.system(f'liquidctl --match "Hydro" set fan{args.fan} speed {args.speed}')
+    else:
+        for fan in aio_fans:
+            os.system(f'liquidctl --match "Hydro" set {fan} speed {args.speed}')
 
 if args.device == "Commander" or args.all_fans is True:
     if args.all_fans is True:
@@ -29,3 +32,6 @@ if args.device == "Commander" or args.all_fans is True:
             os.system(f'liquidctl --match "Commander" set {fan} speed {args.speed}')
     elif args.fan is not None:
         os.system(f'liquidctl --match "Commander" set fan{args.fan} speed {args.speed}')
+    else:
+        for fan in commander_fans:
+            os.system(f'liquidctl --match "Commander" set {fan} speed {args.speed}')
